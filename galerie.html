@@ -10,10 +10,12 @@
     .gallery-masonry {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 12px;
     }
-    .gallery-masonry .gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
-    .gallery-masonry .gallery-item:nth-child(5) { grid-column: span 2; aspect-ratio: 16/9; }
+    .gallery-masonry .gallery-item {
+      grid-column: span 1;
+      aspect-ratio: 4/3;
+    }
 
     .gallery-intro {
       display: grid;
@@ -32,14 +34,10 @@
 
     @media (max-width: 768px) {
       .gallery-masonry { grid-template-columns: 1fr 1fr; }
-      .gallery-masonry .gallery-item:nth-child(1),
-      .gallery-masonry .gallery-item:nth-child(5) { grid-column: span 2; }
       .gallery-intro { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .gallery-masonry { grid-template-columns: 1fr; }
-      .gallery-masonry .gallery-item:nth-child(1),
-      .gallery-masonry .gallery-item:nth-child(5) { grid-column: span 1; }
     }
   </style>
 </head>
