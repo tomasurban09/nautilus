@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Galerie – Fitness Nautilus Vrchlabí. Fotky posilovny, strojů a kardio zóny.">
+  <title>Galerie – Fitness Nautilus Vrchlabí</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .gallery-masonry .gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
+    .gallery-masonry .gallery-item:nth-child(5) { grid-column: span 2; aspect-ratio: 16/9; }
+
+    .gallery-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+    .photo-credit {
+      text-align: right;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-masonry { grid-template-columns: 1fr 1fr; }
+      .gallery-masonry .gallery-item:nth-child(1),
+      .gallery-masonry .gallery-item:nth-child(5) { grid-column: span 2; }
+      .gallery-intro { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .gallery-masonry { grid-template-columns: 1fr; }
+      .gallery-masonry .gallery-item:nth-child(1),
+      .gallery-masonry .gallery-item:nth-child(5) { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="section-label">Podívejte se</span>
+    <h1>Galerie</h1>
+    <p style="font-size:1.05rem;color:var(--muted);max-width:500px;margin-top:10px;">
+      Prohlédněte si naše prostory, vybavení a kardio zónu. Foto: Franta Hrouda.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Intro stats -->
+    <div class="gallery-intro" data-reveal>
+      <div>
+        <span class="section-label">Vybavení</span>
+        <h2 style="margin-bottom:16px;">Moderní prostory<br>ve Vrchlabí</h2>
+        <p style="margin-bottom:20px;">Fitness Nautilus je vybaven profesionálními americkými stroji Hammer Strength, kardio technikou Matrix a Star Trac a kompletní volnou vahou.</p>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;">
+          <div>
+            <div style="font-family:'Bebas Neue';font-size:2.2rem;color:var(--yellow);line-height:1;">6</div>
+            <div style="font-family:'Barlow Condensed';font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Prémiových značek</div>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue';font-size:2.2rem;color:var(--yellow);line-height:1;">2011</div>
+            <div style="font-family:'Barlow Condensed';font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Rok otevření</div>
+          </div>
+          <div>
+            <div style="font-family:'Bebas Neue';font-size:2.2rem;color:var(--yellow);line-height:1;">7×</div>
+            <div style="font-family:'Barlow Condensed';font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Týdně otevřeno</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-size:1.8rem;margin-bottom:8px;">🏋️</div>
+          <p style="font-size:.85rem;color:var(--muted);">Hammer Strength</p>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-size:1.8rem;margin-bottom:8px;">🏃</div>
+          <p style="font-size:.85rem;color:var(--muted);">Kardio zóna</p>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-size:1.8rem;margin-bottom:8px;">🥤</div>
+          <p style="font-size:.85rem;color:var(--muted);">Bar & výživa</p>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;">
+          <div style="font-size:1.8rem;margin-bottom:8px;">🅿️</div>
+          <p style="font-size:.85rem;color:var(--muted);">Parkování zdarma</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery grid -->
+    <div class="gallery-masonry" data-reveal>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02779.jpg" alt="Posilovna Nautilus – hlavní sál" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02794.jpg" alt="Vybavení Nautilus" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02797.jpg" alt="Kardio zóna" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02781.jpg" alt="Stroje Hammer Strength" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02784-2.jpg" alt="Posilovací stroje" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02795.jpg" alt="Fitness Nautilus prostory" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02790.jpg" alt="Volné váhy" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02782-2.jpg" alt="Kardio stroje" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="https://www.fitness-nautilus.cz/media/uploads/dsc02788.jpg" alt="Fitness Nautilus detail" loading="lazy">
+      </div>
+    </div>
+
+    <p class="photo-credit">Foto: Franta Hrouda</p>
+
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Zvětšená fotografie">
+  <button id="lbClose" class="lightbox-close" aria-label="Zavřít">✕</button>
+  <button id="lbPrev" class="lightbox-nav lightbox-prev" aria-label="Předchozí">‹</button>
+  <img id="lightboxImg" class="lightbox-img" src="" alt="Zvětšená fotografie">
+  <button id="lbNext" class="lightbox-nav lightbox-next" aria-label="Další">›</button>
+</div>
+
+<!-- CTA -->
+<section style="background:var(--yellow);padding:56px 0;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:12px;">Přijďte se podívat osobně</h2>
+    <p style="color:rgba(0,0,0,.65);margin-bottom:24px;">Fotografiemi to nekončí – navštivte nás a projděte si fitness sami.</p>
+    <a href="kontakt.html" class="btn" style="background:var(--black);color:var(--yellow);">Jak nás najdete</a>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

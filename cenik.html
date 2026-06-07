@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ceník Fitness Nautilus Vrchlabí – jednorázové vstupy, permanentky, FLEX permanentka.">
+  <title>Ceník – Fitness Nautilus Vrchlabí</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .price-tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 32px;
+      width: fit-content;
+    }
+    .price-tab {
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      transition: all var(--transition);
+    }
+    .price-tab.active {
+      background: var(--yellow);
+      color: #fff;
+    }
+    .price-panel { display: none; }
+    .price-panel.show { display: block; }
+
+    .flex-info {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .flex-info h3 { margin-bottom: 16px; }
+    .flex-conditions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .flex-cond {
+      padding: 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .flex-cond h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+    .flex-cond p { font-size: 0.9rem; color: var(--muted); }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .example-box {
+      padding: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .example-box p { font-size: .9rem; color: var(--muted); margin-bottom: 6px; }
+    .example-box strong { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .flex-conditions { grid-template-columns: 1fr; }
+      .example-grid { grid-template-columns: 1fr; }
+      .price-tabs { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- Hero -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="section-label">Vstupné</span>
+    <h1>Ceník</h1>
+    <p style="font-size:1.1rem;color:var(--muted);max-width:500px;margin-top:12px;">
+      Transparentní ceny bez skrytých poplatků. Přijímáme hotovost, platební karty i Multisport.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Tabs -->
+    <div class="price-tabs" id="priceTabs">
+      <button class="price-tab active" data-tab="vstupy">Vstupy & permanentky</button>
+      <button class="price-tab" data-tab="flex">Permanentka FLEX</button>
+    </div>
+
+    <!-- Panel: Vstupy -->
+    <div class="price-panel show" id="vstupy">
+      <div class="card" style="overflow:hidden;">
+        <div style="padding:12px 16px 0;background:var(--card-bg);">
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>Typ vstupenky / permanentky</th>
+                <th>Klasické</th>
+                <th>ZTP / Senior 65+</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jednorázový vstup</td>
+                <td>195 Kč</td>
+                <td>160 Kč</td>
+              </tr>
+              <tr>
+                <td>10 vstupů <span style="color:var(--muted);font-size:.85rem;">(platnost 3 měsíce)</span></td>
+                <td>1 600 Kč</td>
+                <td>1 300 Kč</td>
+              </tr>
+              <tr>
+                <td>30 vstupů <span style="color:var(--muted);font-size:.85rem;">(platnost 1 rok)</span></td>
+                <td>4 500 Kč</td>
+                <td>3 600 Kč</td>
+              </tr>
+              <tr>
+                <td>Permanentka na 1 měsíc</td>
+                <td>1 600 Kč</td>
+                <td>1 300 Kč</td>
+              </tr>
+              <tr>
+                <td>Permanentka na 3 měsíce</td>
+                <td>4 500 Kč</td>
+                <td>3 600 Kč</td>
+              </tr>
+              <tr>
+                <td>Permanentka na 6 měsíců</td>
+                <td>8 400 Kč</td>
+                <td>6 600 Kč</td>
+              </tr>
+              <tr>
+                <td>Permanentka na 12 měsíců</td>
+                <td>15 600 Kč</td>
+                <td>12 000 Kč</td>
+              </tr>
+              <tr class="highlight">
+                <td>
+                  <strong style="color:var(--white);">Permanentka FLEX na 12 měsíců</strong>
+                  <span class="badge badge-accent" style="margin-left:8px;">Doporučujeme</span>
+                </td>
+                <td>16 800 Kč</td>
+                <td>13 200 Kč</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:20px 16px;background:rgba(232,53,26,0.04);border-top:1px solid var(--border);">
+          <p style="font-size:.85rem;color:var(--muted);">
+            💳 Přijímáme hotovost, platební karty a karty Multisport.
+            Při vrácení permanentky kontaktujte předem majitele.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: FLEX -->
+    <div class="price-panel" id="flex">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;">
+        <div class="card" style="padding:36px;border-color:rgba(232,53,26,0.3);">
+          <span class="badge badge-accent" style="margin-bottom:16px;">Klasická cena</span>
+          <div style="font-family:'Bebas Neue';font-size:3.5rem;color:var(--white);line-height:1;">16 800 Kč</div>
+          <p style="color:var(--muted);font-size:.9rem;margin-top:8px;">= 1 400 Kč / měsíc</p>
+          <p style="color:var(--muted);font-size:.85rem;margin-top:4px;">Platnost 12 měsíců</p>
+        </div>
+        <div class="card" style="padding:36px;border-color:rgba(201,150,42,0.3);">
+          <span class="badge badge-gold" style="margin-bottom:16px;">ZTP / Student / Senior 65+</span>
+          <div style="font-family:'Bebas Neue';font-size:3.5rem;color:var(--white);line-height:1;">13 200 Kč</div>
+          <p style="color:var(--muted);font-size:.9rem;margin-top:8px;">= 1 100 Kč / měsíc</p>
+          <p style="color:var(--muted);font-size:.85rem;margin-top:4px;">Platnost 12 měsíců</p>
+        </div>
+      </div>
+
+      <div class="flex-info">
+        <span class="section-label">Jak FLEX funguje</span>
+        <h3>Roční permanentka s možností vrácení</h3>
+        <p style="color:var(--muted);max-width:640px;">
+          FLEX permanentka kombinuje výhodnou cenu dlouhodobé permanentky s maximální flexibilitou.
+          Kdykoli ji můžete vrátit a dostat zpět poměrnou část peněz.
+        </p>
+
+        <div class="flex-conditions">
+          <div class="flex-cond">
+            <h4>Platnost</h4>
+            <p>Permanentka je platná 12 měsíců od data zakoupení.</p>
+          </div>
+          <div class="flex-cond">
+            <h4>Předčasné ukončení</h4>
+            <p>Lze ukončit z libovolných důvodů – zranění, stěhování, ztráta zájmu o cvičení.</p>
+          </div>
+          <div class="flex-cond">
+            <h4>Minimální čerpání</h4>
+            <p>Účtujeme minimálně 3 měsíce (4 800 Kč klasicky / 3 900 Kč zlevněné) i při dřívějším ukončení.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;">
+          <h4 style="font-family:'Barlow Condensed';font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Vzorové příklady (klasická cena)</h4>
+          <div class="example-grid">
+            <div class="example-box">
+              <p>Ukončení po <strong>4 měsících</strong></p>
+              <p>Odečteno: 4 × 1 600 = <strong>6 400 Kč</strong></p>
+              <p>Vráceno: <strong>10 400 Kč</strong></p>
+            </div>
+            <div class="example-box">
+              <p>Ukončení po <strong>8 měsících</strong></p>
+              <p>Odečteno: 8 × 1 600 = <strong>12 800 Kč</strong></p>
+              <p>Vráceno: <strong>4 000 Kč</strong></p>
+            </div>
+          </div>
+          <p style="font-size:.85rem;color:var(--muted);margin-top:16px;padding:16px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--border);">
+            ℹ️ Při vracení peněz je rozhodující datum nákupu permanentky. Výpočet se provede jako součet měsíčních permanentek za každý využitý měsíc (i započatý). <strong style="color:var(--white);">Vrácení peněz je nutné předem domluvit s majitelem</strong> – směna většinou nedisponuje dostatečnou hotovostí.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--dark2);padding:64px 0;">
+  <div class="container" style="text-align:center;">
+    <h2 style="margin-bottom:16px;">Máte dotazy k ceníku?</h2>
+    <p style="color:var(--muted);margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto;">
+      Zavolejte nebo napište – rádi vám poradíme, který tarif je pro vás nejlepší.
+    </p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:+420777822881" class="btn btn-primary">📞 777 822 881</a>
+      <a href="kontakt.html" class="btn btn-outline">Kontaktní formulář</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Pricing tabs
+  document.querySelectorAll('.price-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.price-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.price-panel').forEach(p => p.classList.remove('show'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('show');
+    });
+  });
+</script>
+</body>
+</html>

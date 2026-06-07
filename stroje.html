@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Americké stroje Hammer Strength, Life Fitness a Nautilus ve Fitness Nautilus Vrchlabí.">
+  <title>Americké stroje – Fitness Nautilus Vrchlabí</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 8px;
+    }
+    .brand-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 26px 28px;
+      transition: border-color var(--transition);
+    }
+    .brand-card:hover { border-color: rgba(245,197,0,.3); }
+    .brand-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: .04em;
+      font-size: 1.5rem;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+    .brand-card p { color: var(--muted); font-size: .9rem; }
+
+    .machine-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .machine-card .machine-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .machine-card .machine-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .machine-card:hover .machine-photo img { transform: scale(1.05); }
+    .machine-body { padding: 18px 20px 22px; }
+    .machine-body h3 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+    .machine-body p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .top10-badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 11px;
+      border-radius: 30px;
+      background: var(--yellow-dim);
+      color: var(--yellow);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 960px) {
+      .brand-grid { grid-template-columns: 1fr; }
+      .machine-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .machine-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="section-label">Vybavení</span>
+    <h1>Americké stroje</h1>
+    <p style="font-size:1.05rem;color:var(--muted);max-width:560px;margin-top:10px;">
+      Profesionální posilovací technika světových značek Hammer Strength, Life Fitness a Nautilus –
+      pro extrémní silový trénink i precizní izolaci jednotlivých svalových partií.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <span class="section-label">Značky</span>
+    <h2 style="margin-bottom:16px;">Světové špičky<br>pod jednou střechou</h2>
+    <div class="divider"></div>
+
+    <div class="brand-grid" data-reveal>
+      <div class="brand-card">
+        <h3>Hammer Strength</h3>
+        <p>
+          Oficiální světová jednička mezi stroji na kotouče (plate loaded), určená pro extrémní silový trénink.
+          Gary Jones, duchovní otec značky, dovedl biomechaniku využívající divergentní a iso-laterální pohyb
+          k dokonalosti. Tyto stroje používají nejlepší kulturisté, sportovci a atleti po celém světě.
+        </p>
+      </div>
+      <div class="brand-card">
+        <h3>Life Fitness</h3>
+        <p>
+          Světový lídr fitness průmyslu a absolutní špička v technologii i designu. Značka, která je
+          synonymem spolehlivosti, trvanlivosti a kvality.
+        </p>
+      </div>
+      <div class="brand-card">
+        <h3>Nautilus</h3>
+        <p>
+          Jedna z nejuznávanějších značek fitness vybavení, založená Arthurem Jonesem, autorem prvního stroje
+          s proměnlivým odporem. Vyzkoušejte u nás legendární Nautilus Nitro Pullover, který používal
+          i Arnold Schwarzenegger – rozsah pohybu v ramenních kloubech až 250°.
+        </p>
+      </div>
+    </div>
+
+    <p style="margin-top:28px;color:var(--muted);max-width:780px;">
+      Kromě uvedených strojů máte u nás k dispozici také kladkovou věž (spodní kladka, horní kladka,
+      protisměrné kladky, zakopávání ve stoje, shyby a kliky s dopomocí), bradla, přednožování na břicho,
+      lavici na břicho a výpony v sedě na lýtka.
+    </p>
+
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+
+    <span class="section-label">Seznam strojů</span>
+    <h2 style="margin-bottom:16px;">Na čem si u nás<br>můžete zacvičit</h2>
+    <div class="divider"></div>
+
+    <div class="machine-grid" data-reveal>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/high_row.jpg" alt="Hammer Strength High Row" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength High Row</h3>
+          <p>Dráha pohybu opačná oproti stroji Incline Press, kterou lze jen ztěží napodobit činkou nebo kladkou. Dodatečná rukojeť umožňuje stabilizaci jednou paží, iso-laterální pohyb rovnoměrný rozvoj síly.</p>
+          <span class="top10-badge">TOP 10 Hammer Strength</span>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/ramena_klec.jpg" alt="Hammer Strength Olympic Military Bench" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Olympic Military Bench</h3>
+          <p>Olympijská lavice pro tlaky nad hlavu v sedě – základ pro budování síly a objemu ramen.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/ramenaaa.jpg" alt="Hammer Strength Lateral Raise" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Lateral Raise</h3>
+          <p>Opěradlo pod úhlem 25° pro lepší vyrovnání těla a cílení na střední deltový sval. Iso-laterální pohyb umožňuje rovnoměrný rozvoj síly.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/benchpress.jpg" alt="Hammer Strength Olympic Flat Bench" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Olympic Flat Bench</h3>
+          <p>Klasická olympijská rovná lavice pro bench press a další tlakové cviky na hrudník.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/leg.jpg" alt="Hammer Strength Leg Press" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Leg Press</h3>
+          <p>Jeden z nejprodávanějších strojů Hammer Strength pro silový trénink nohou.</p>
+          <span class="top10-badge">TOP 10 Hammer Strength</span>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/lavicka.jpg" alt="Hammer Strength Adjustable Bench ProStyle" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Adjustable Bench ProStyle</h3>
+          <p>Polohovatelná lavice ProStyle – univerzální opora pro širokou škálu cviků s činkami i na strojích.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/wide_chest.jpg" alt="Hammer Strength Wide Chest" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Wide Chest</h3>
+          <p>Vyšší stupeň souběžného pohybu než u Decline Press, širší startovní pozice vhodná pro větší uživatele. Iso-laterální pohyb zajišťuje souměrný rozvoj síly.</p>
+          <span class="top10-badge">TOP 10 Hammer Strength</span>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/multi.jpg" alt="Hammer Strength Smith Machine" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Smith Machine</h3>
+          <p>Tyč ve svodidlech se pohybuje v sedmistupňovém úhlu pro přirozenou dráhu pohybu. Nosnost 295 kg, startovní zatížení 9 kg.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/ramena.jpg" alt="Hammer Strength Shoulder Press" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Shoulder Press</h3>
+          <p>Zádová opěrka nakloněná pod úhlem 40° pro stabilizaci při zvedání těžkých vah a bezpečnostní pás omezující hypertenzi v bederní páteři. Iso-laterální pohyb zajišťuje souměrný rozvoj síly.</p>
+          <span class="top10-badge">TOP 10 Hammer Strength</span>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/bench.jpg" alt="Hammer Strength Horizontal Bench Press" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Horizontal Bench Press</h3>
+          <p>Zádová opěrka nakloněná pod úhlem 5° pro lepší stabilizaci při zvedání těžkých vah. Iso-laterální pohyb zajišťuje souměrný rozvoj síly.</p>
+          <span class="top10-badge">TOP 10 Hammer Strength</span>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/klec.jpg" alt="Hammer Strength HD Elite Half Rack" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength HD Elite Half Rack</h3>
+          <p>Robustní polovysoká klec pro dřepy, tlaky a funkční silový trénink.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/hammer-strength-hd-elite-6x8-platform-w-medium-insert-standard-hammer-logo.jpg" alt="Hammer Strength Platform" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Platform</h3>
+          <p>Vyhrazená plošina pro olympijské zvedání a trénink s velkými zátěžemi.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/lytka.jpg" alt="Hammer Strength Super Horizontal Calf" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Super Horizontal Calf</h3>
+          <p>Horizontální lýtkový stroj v sedě navržený tak, aby odpor držely kyčle, nikoli páteř. Zatěžuje gastrocnemius i soleus.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/chest_back.jpg" alt="Hammer Strength Chest / Back" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Chest / Back</h3>
+          <p>Stroj pro tah i tlak – posilování zad i hrudníku. Opěrka pro tlaky je nakloněna do 10° pro přesné zatížení horní partie prsou, podhmat zatěžuje primárně široké zádové svaly.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/hammer.jpg" alt="Hammer Strength Seated Biceps" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Hammer Strength Seated Biceps</h3>
+          <p>Stroj pro izolovaný trénink bicepsu vsedě s precizním vedením pohybu.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/abduction.jpg" alt="Life Fitness Signature Hip Abduction" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Life Fitness Signature Hip Abduction</h3>
+          <p>Izolovaný trénink hýžďových a stehenních svalů formou abdukce kyčle.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/triceps.jpg" alt="Life Fitness Triceps Press" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Life Fitness Triceps Press</h3>
+          <p>Precizní izolace tricepsu s plynulým vedením pohybu po celé dráze.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/legexxxxx.jpg" alt="Life Fitness Leg Extension" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Life Fitness Leg Extension</h3>
+          <p>Izolovaný trénink čtyřhlavého stehenního svalu vsedě.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/curl.jpg" alt="Life Fitness Seated Leg Curl" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Life Fitness Seated Leg Curl</h3>
+          <p>Izolovaný trénink hamstringů (zadní strany stehen) vsedě.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/biceps.jpg" alt="Life Fitness Biceps Curl" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Life Fitness Biceps Curl</h3>
+          <p>Stroj pro izolovaný trénink bicepsu s podporou loktů a přesným vedením pohybu.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/pullover.jpg" alt="Nautilus Nitro Pullover" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Nautilus Nitro Pullover</h3>
+          <p>Legendární stroj, který používal i Arnold Schwarzenegger. Nabízí největší myslitelný rozsah pohybu v ramenních kloubech – až 250°.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/pecfly.jpg" alt="Nautilus Nitro Pec Fly" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Nautilus Nitro Pec Fly</h3>
+          <p>Izolovaný trénink prsních svalů s biomechanikou typickou pro značku Nautilus.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/abdo.jpg" alt="Nautilus Nitro Plus Abdominal" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Nautilus Nitro Plus Abdominal</h3>
+          <p>Cílený trénink břišních svalů s plynulým odporem po celé dráze pohybu.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/nautilus-nitro-bicep-curl-upraveno.jpg" alt="Nautilus Nitro Bicep Curl" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Nautilus Nitro Bicep Curl</h3>
+          <p>Izolovaný trénink bicepsu s charakteristickou biomechanikou Nautilus.</p>
+        </div>
+      </div>
+
+      <div class="card machine-card">
+        <div class="machine-photo"><img src="https://www.fitness-nautilus.cz/media/uploads/nautilus-nitro-compound-row-001_1.jpg" alt="Nautilus Nitro Compound Row" loading="lazy"></div>
+        <div class="machine-body">
+          <h3>Nautilus Nitro Compound Row</h3>
+          <p>Komplexní stroj pro trénink zad s nastavitelnou drahou pohybu pro maximální zapojení svalstva.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--yellow);padding:52px 0;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:10px;">Vyzkoušejte je sami</h2>
+    <p style="color:rgba(0,0,0,.6);margin-bottom:22px;">Náš instruktor vám stroje rád ukáže a vysvětlí, jak je správně používat – zdarma.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="instruktor.html" class="btn" style="background:var(--black);color:var(--yellow);">O instruktorovi</a>
+      <a href="kontakt.html" class="btn" style="background:rgba(0,0,0,.15);color:var(--black);border:1px solid rgba(0,0,0,.2);">Kontaktní formulář</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

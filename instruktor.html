@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Štěpán Domorád – osobní trenér a instruktor Fitness Nautilus Vrchlabí.">
+  <title>Instruktor – Fitness Nautilus Vrchlabí</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .trainer-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .trainer-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      position: sticky;
+      top: calc(var(--nav-h) + 20px);
+    }
+
+    /* Photo */
+    .trainer-photo-wrap {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      background: #1a1a1a;
+      position: relative;
+    }
+    .trainer-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+      image-rendering: auto;
+    }
+    .trainer-photo-wrap::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 3px;
+      background: var(--yellow);
+    }
+
+    /* Info block */
+    .trainer-info {
+      padding: 24px 24px 20px;
+    }
+    .trainer-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: .05em;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .trainer-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0;
+    }
+
+    /* Contact rows – each on its own full line */
+    .trainer-contacts {
+      margin-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .trainer-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      font-size: .9rem;
+      text-decoration: none;
+      transition: color var(--transition);
+      width: 100%;
+    }
+    .trainer-contact-row:last-child {
+      border-bottom: none;
+    }
+    .trainer-contact-row:hover { color: var(--yellow); }
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(245,197,0,.1);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--yellow);
+    }
+
+    /* Certs – stacked vertically */
+    .certs {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cert-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: .88rem;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .cert-row svg { color: var(--yellow); flex-shrink: 0; }
+
+    /* Right side */
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-bottom: 18px;
+      transition: border-color var(--transition);
+    }
+    .service-card:hover { border-color: rgba(245,197,0,.3); }
+    .service-card h3 { font-size: 1.45rem; margin-bottom: 10px; }
+
+    .service-badge {
+      display: inline-block;
+      padding: 3px 13px;
+      border-radius: 30px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .badge-free { background: rgba(34,197,94,.12); color: #22c55e; }
+    .badge-paid { background: rgba(245,197,0,.12); color: var(--yellow); }
+
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .check-list li { display: flex; gap: 9px; color: var(--text); font-size: .9rem; }
+    .check-list li span { color: var(--yellow); font-weight: 700; flex-shrink: 0; }
+
+    .tip-box {
+      padding: 18px 22px;
+      background: rgba(245,197,0,.05);
+      border: 1px solid rgba(245,197,0,.18);
+      border-radius: 10px;
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 960px) {
+      .trainer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .trainer-card { position: static; }
+      .trainer-photo-wrap { height: 320px; }
+      .cert-row { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="section-label">Odbornost</span>
+    <h1>Instruktor</h1>
+    <p style="font-size:1.05rem;color:var(--muted);max-width:480px;margin-top:10px;">
+      Osobní trenér a instruktor s více než 15letou praxí – k dispozici každému návštěvníkovi zdarma.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="trainer-grid">
+
+      <!-- LEFT -->
+      <div>
+        <div class="trainer-card" data-reveal>
+
+          <div class="trainer-photo-wrap">
+            <img
+              src="https://www.fitness-nautilus.cz/media/uploads/panel-stepan2.jpg"
+              alt="Štěpán Domorád"
+              loading="eager"
+              decoding="async"
+            >
+          </div>
+
+          <div class="trainer-info">
+            <div class="trainer-name">Štěpán Domorád</div>
+            <div class="trainer-title">Majitel · Trenér · Instruktor</div>
+
+            <div class="trainer-contacts">
+              <a class="trainer-contact-row" href="tel:+420777822881">
+                <div class="contact-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                777 822 881
+              </a>
+              <a class="trainer-contact-row" href="mailto:stepan.domorad@seznam.cz">
+                <div class="contact-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </div>
+                stepan.domorad@seznam.cz
+              </a>
+              <a class="trainer-contact-row" href="kontakt.html">
+                <div class="contact-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                  </svg>
+                </div>
+                Kontaktní formulář
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certs stacked -->
+        <div class="certs" data-reveal>
+          <div class="cert-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="6"/>
+              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+            Absolvent s vyznamenáním
+          </div>
+          <div class="cert-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="6"/>
+              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+            15+ let praxe v posilování
+          </div>
+          <div class="cert-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="6"/>
+              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+            Trenérská škola Petra Stacha
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div data-reveal>
+        <span class="section-label">O instruktorovi</span>
+        <h2 style="margin-bottom:16px;">Váš průvodce<br>světem fitness</h2>
+        <div class="divider"></div>
+
+        <p style="margin-bottom:14px;">
+          Na vaše cvičení bude dohlížet <strong style="color:var(--white);">Štěpán Domorád</strong>,
+          osobní trenér a instruktor, který absolvoval s vyznamenáním
+          <strong style="color:var(--white);">Trenérskou školu Petra Stacha</strong> – mistra Evropy v posilování.
+        </p>
+        <p style="margin-bottom:36px; color:var(--muted);">
+          V oblasti posilování se pohybuje více než 15 let. Prošel přísnými testy z června 2010
+          a od té doby pomáhá klientům bezpečně a efektivně dosáhnout jejich cílů.
+        </p>
+
+        <div class="service-card">
+          <span class="service-badge badge-free">Zdarma pro každého</span>
+          <h3>Služby instruktora</h3>
+          <p style="color:var(--muted);margin-bottom:16px;">
+            Každý návštěvník může využít služeb instruktora <strong style="color:var(--white);">zcela zdarma</strong>.
+            Naučí vás správně používat stroje a cvičit bezpečně a efektivně.
+          </p>
+          <ul class="check-list">
+            <li><span>✓</span> Správné nastavení a obsluha strojů</li>
+            <li><span>✓</span> Technika cviků a bezpečné provedení</li>
+            <li><span>✓</span> Základní poradenství pro začátečníky</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <span class="service-badge badge-paid">Placená lekce</span>
+          <h3>Osobní trenér</h3>
+          <p style="color:var(--muted);margin-bottom:16px;">
+            Nejrychlejší cesta k výsledkům. Kompletní vedení tréninku
+            a individuální plán přesně podle vašeho cíle.
+          </p>
+          <ul class="check-list" style="margin-bottom:24px;">
+            <li><span>✓</span> Kompletní vedení tréninkové jednotky</li>
+            <li><span>✓</span> Individuální tréninkový plán</li>
+            <li><span>✓</span> Dietní porada (volitelně)</li>
+            <li><span>✓</span> Sestavení stravovacího plánu (volitelně)</li>
+          </ul>
+          <a href="kontakt.html" class="btn btn-primary">Objednat se →</a>
+        </div>
+
+        <div class="tip-box">
+          💡 <strong style="color:var(--white);">Tip:</strong> Termín si domluvte přímo ve fitness,
+          telefonicky na <a href="tel:+420777822881" style="color:var(--yellow);">777 822 881</a>
+          nebo přes kontaktní formulář.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--yellow);padding:52px 0;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:10px;">Chcete začít trénovat?</h2>
+    <p style="color:rgba(0,0,0,.6);margin-bottom:22px;">Zavolejte nebo napište – domluvíme vše potřebné.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:+420777822881" class="btn" style="background:var(--black);color:var(--yellow);">📞 777 822 881</a>
+      <a href="kontakt.html" class="btn" style="background:rgba(0,0,0,.15);color:var(--black);border:1px solid rgba(0,0,0,.2);">Kontaktní formulář</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

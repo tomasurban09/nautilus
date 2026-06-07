@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aktuality Fitness Nautilus Vrchlabí – novinky, otevírací doba o svátcích a akce.">
+  <title>Aktuality – Fitness Nautilus Vrchlabí</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .articles-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .article-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+      margin-bottom: 20px;
+      transition: all var(--transition);
+    }
+    .article-card:hover {
+      border-color: rgba(232,53,26,0.3);
+      transform: translateX(4px);
+    }
+    .article-card h2 { font-size: 1.5rem; margin-bottom: 12px; }
+    .article-card p { font-size: .95rem; color: var(--muted); line-height: 1.6; }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .article-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .sidebar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      margin-bottom: 20px;
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+    .sidebar-card h3 { font-size: 1.2rem; margin-bottom: 20px; }
+
+    @media (max-width: 900px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .sidebar-card { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="section-label">Novinky</span>
+    <h1>Aktuality</h1>
+    <p style="font-size:1.1rem;color:var(--muted);max-width:500px;margin-top:12px;">
+      Sledujte otevírací dobu o svátcích, akce a novinky z Fitness Nautilus.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="articles-grid">
+      <!-- Articles -->
+      <div>
+        <div class="article-card" data-reveal>
+          <div class="article-meta">
+            <span class="article-date">30. 3. 2026</span>
+            <span class="badge badge-accent">Aktuální</span>
+          </div>
+          <h2>Velký pátek a velikonoční pondělí – běžná otevírací doba</h2>
+          <p>
+            Vážení, ve svátky 3. a 6. dubna (Velký pátek a velikonoční pondělí) bude otevřeno dle
+            standardní otevírací doby. Pondělí až pátek 6:30–21:00, víkendy 7:30–21:00.
+            Těšíme se na vás!
+          </p>
+        </div>
+
+        <div class="article-card" data-reveal>
+          <div class="article-meta">
+            <span class="article-date">16. 11. 2025</span>
+          </div>
+          <h2>17. listopadu 2025 – otevřeno klasicky 6:30 až 21:00</h2>
+          <p>
+            17. listopadu 2025 je státní svátek – Den boje za svobodu a demokracii.
+            I přesto budeme otevřeni klasicky od 6:30 do 21:00. Přijďte si zatrénovat!
+          </p>
+        </div>
+
+        <div class="article-card" data-reveal>
+          <div class="article-meta">
+            <span class="article-date">22. 12. 2024</span>
+          </div>
+          <h2>Otevírací doba přes vánoční svátky a akce</h2>
+          <p>
+            Informace o otevírací době přes vánoční svátky naleznete na naší stránce
+            nebo nás kontaktujte telefonicky. Snažíme se být k dispozici co nejvíce.
+          </p>
+        </div>
+
+        <div class="article-card" style="border-color:rgba(232,53,26,0.3);background:rgba(232,53,26,0.04);" data-reveal>
+          <div class="article-meta">
+            <span class="article-date" style="color:var(--gold);">Novinka</span>
+            <span class="badge badge-gold">Doporučujeme</span>
+          </div>
+          <h2>Nová permanentka FLEX – cvičte bez závazků</h2>
+          <p>
+            Přinášíme vám nový typ roční permanentky – <strong style="color:var(--white);">FLEX</strong>.
+            Kombinuje výhodnou cenu dlouhodobé permanentky s maximální flexibilitou.
+            Kdykoli ji můžete vrátit a dostat zpět poměrnou část peněz.
+          </p>
+          <a href="cenik.html" class="btn btn-primary mt-16" style="padding:10px 20px;font-size:.85rem;">Více o FLEX →</a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-card">
+          <h3>Otevírací doba</h3>
+          <table class="hours-table">
+            <tr><td>Pondělí</td><td>6:30 – 21:00</td></tr>
+            <tr><td>Úterý</td><td>6:30 – 21:00</td></tr>
+            <tr><td>Středa</td><td>6:30 – 21:00</td></tr>
+            <tr><td>Čtvrtek</td><td>6:30 – 21:00</td></tr>
+            <tr><td>Pátek</td><td>6:30 – 21:00</td></tr>
+            <tr><td>Sobota</td><td>7:30 – 21:00</td></tr>
+            <tr><td>Neděle</td><td>7:30 – 21:00</td></tr>
+          </table>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+            <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px;">O svátcích sledujte aktuality nebo volejte:</p>
+            <a href="tel:+420777822881" style="font-family:'Bebas Neue';font-size:1.6rem;color:var(--white);letter-spacing:.04em;">777 822 881</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card" style="position:static;">
+          <h3>Sledujte nás</h3>
+          <p style="font-size:.9rem;color:var(--muted);margin-bottom:20px;">Nejrychlejší aktuality sdílíme na Facebooku.</p>
+          <a href="https://www.facebook.com/pages/Fitness-Nautilus/194213307277706"
+             target="_blank" rel="noopener"
+             class="btn btn-outline" style="width:100%;justify-content:center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

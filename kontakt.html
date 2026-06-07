@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kontakt Fitness Nautilus Vrchlabí – adresa, telefon, e-mail a kontaktní formulář.">
+  <title>Kontakt – Fitness Nautilus Vrchlabí</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .contact-info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .contact-info-top {
+      padding: 36px;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      padding: 20px 36px;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .contact-detail:hover { background: rgba(255,255,255,0.02); }
+    .contact-detail:last-child { border-bottom: none; }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      background: rgba(232,53,26,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-icon svg { color: var(--yellow); }
+    .contact-detail-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .contact-detail-value { color: var(--white); font-size: .95rem; }
+    .contact-detail-value a { color: var(--white); }
+    .contact-detail-value a:hover { color: var(--yellow); }
+
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+    }
+
+    .map-container {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-top: 24px;
+      height: 260px;
+    }
+    .map-container iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="section-label">Kde nás najdete</span>
+    <h1>Kontakt</h1>
+    <p style="font-size:1.1rem;color:var(--muted);max-width:500px;margin-top:12px;">
+      Máte dotaz, chcete se objednat nebo jen zjistit více? Napište nebo zavolejte.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: Info -->
+      <div>
+        <div class="contact-info-card" data-reveal>
+          <div class="contact-info-top">
+            <img src="img/logo.png" alt="Fitness Nautilus" style="height:64px;width:auto;display:block;margin:0 auto 8px;">
+            <p style="color:var(--muted);font-size:.9rem;">Posilovna Vrchlabí · Od roku 2011</p>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Adresa</div>
+              <div class="contact-detail-value">
+                Na Bělidle 900<br>543 01 Vrchlabí
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Telefon</div>
+              <div class="contact-detail-value">
+                <a href="tel:+420777822881">777 822 881</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">E-mail</div>
+              <div class="contact-detail-value">
+                <a href="mailto:stepan.domorad@seznam.cz">stepan.domorad@seznam.cz</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Otevírací doba</div>
+              <div class="contact-detail-value" style="font-size:.9rem;">
+                Po–Pá: 6:30 – 21:00<br>
+                So–Ne: 7:30 – 21:00
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Platba</div>
+              <div class="contact-detail-value" style="font-size:.9rem;">
+                Hotovost · Platební karta · Multisport
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container" data-reveal>
+          <iframe
+            src="https://maps.google.com/maps?q=Fitness+Nautilus,+Na+Bělidle+900,+Vrchlabí&output=embed&z=16"
+            title="Mapa – Fitness Nautilus Vrchlabí"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <a href="https://maps.google.cz/maps?q=Fitness+Nautilus,+Na+bělidle+900,+Vrchlabí"
+           target="_blank" rel="noopener"
+           class="btn btn-outline mt-16" style="width:100%;justify-content:center;margin-top:12px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Otevřít v Google Maps
+        </a>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="form-card" data-reveal>
+        <span class="section-label">Napište nám</span>
+        <h2 style="margin-bottom:8px;">Kontaktní formulář</h2>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:32px;">
+          Vyplňte formulář a my se vám ozveme co nejdříve.
+        </p>
+
+        <form id="contactForm" novalidate>
+          <div class="grid-2" style="gap:16px;">
+            <div class="form-group">
+              <label class="form-label" for="name">Jméno a příjmení *</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Jan Novák" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Telefon</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="777 000 000">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">E-mail *</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="jan@email.cz" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">Téma zprávy</label>
+            <select class="form-select" id="subject" name="subject">
+              <option value="">– Vyberte téma –</option>
+              <option>Informace o členství</option>
+              <option>Permanentka FLEX</option>
+              <option>Osobní trenér</option>
+              <option>Otevírací doba</option>
+              <option>Jiné</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Zpráva *</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Vaše zpráva..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" name="newsletter">
+              Chci odebírat novinky a akce Fitness Nautilus
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px 32px;font-size:1rem;">
+            Odeslat zprávu
+          </button>
+
+          <p style="font-size:.8rem;color:var(--muted);text-align:center;margin-top:12px;">
+            Nebo zavolejte přímo: <a href="tel:+420777822881" style="color:var(--yellow);">777 822 881</a>
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

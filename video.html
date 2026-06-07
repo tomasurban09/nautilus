@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Video z Fitness Nautilus Vrchlabí – semináře, soustředění a tréninky.">
+  <title>Video – Fitness Nautilus Vrchlabí</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+    .video-card .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #000;
+      cursor: pointer;
+    }
+    .video-card .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .video-card .video-frame img.video-thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease, filter .3s ease;
+    }
+    .video-card .video-frame:hover img.video-thumb {
+      transform: scale(1.04);
+      filter: brightness(.75);
+    }
+    .video-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px; height: 48px;
+      border-radius: 14px;
+      background: #FF0000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5);
+      transition: transform .25s ease, background .25s ease;
+    }
+    .video-card .video-frame:hover .video-play-btn {
+      background: #FF1A1A;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .video-play-btn svg { margin-left: 4px; }
+
+    .video-body { padding: 16px 20px 20px; }
+    .video-body p {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 800px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="section-label">Podívejte se</span>
+    <h1>Video</h1>
+    <p style="font-size:1.05rem;color:var(--muted);max-width:520px;margin-top:10px;">
+      Záznamy ze seminářů, soustředění a tréninků přímo z Fitness Nautilus Vrchlabí. Klikněte na náhled a video se přehraje přímo na stránce.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="video-grid" data-reveal>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="3pK665MjXbQ" data-yt-title="Sestřih toho nejlepšího z Amix Worshopu - říjen 2019">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/3pK665MjXbQ/hqdefault.jpg" alt="Sestřih toho nejlepšího z Amix Worshopu - říjen 2019" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Sestřih toho nejlepšího z Amix Worshopu – říjen 2019</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="iiE5SVemEJY" data-yt-title="Záznam ze semináře s Milanem Šádkem a Barborou Mlejneckou">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/iiE5SVemEJY/hqdefault.jpg" alt="Záznam ze semináře s Milanem Šádkem a Barborou Mlejneckou" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Záznam ze semináře s Milanem Šádkem a Barborou Mlejneckou</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="8YRPlF9bwAE" data-yt-title="Team Vacek - jeden z tréninků">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/8YRPlF9bwAE/hqdefault.jpg" alt="Team Vacek - jeden z tréninků" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Team Vacek – jeden z tréninků čtveřice Jirka Vacek, Vojta Trnka, Artur Bartusik a Jamie Kopecký zachytil svým objektivem Radek Kober.</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="CWpbThX5kUQ" data-yt-title="Toro Gym Team - soustředění v prosinci 2018">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/CWpbThX5kUQ/hqdefault.jpg" alt="Toro Gym Team - soustředění v prosinci 2018" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Toro Gym Team – soustředění v prosinci 2018</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="L13jMfVbHbY" data-yt-title="Fitness Nautilus v roce 2017">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/L13jMfVbHbY/hqdefault.jpg" alt="Fitness Nautilus v roce 2017" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Fitness Nautilus v roce 2017</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="EV8aMzehnLU" data-yt-title="DJ Live Set In The Gym - tréninky při živém setu DJeye Jirky Vondry">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/EV8aMzehnLU/hqdefault.jpg" alt="DJ Live Set In The Gym - tréninky při živém setu DJeye Jirky Vondry" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>DJ Live Set In The Gym – tréninky při živém setu DJeye Jirky Vondry</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="ZmXdDsZHswE" data-yt-title="Petr Richtár - trénink v srpnu 2017">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/ZmXdDsZHswE/hqdefault.jpg" alt="Petr Richtár - trénink v srpnu 2017" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Petr Richtár – trénink v srpnu 2017</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="-ipUeuKVSPE" data-yt-title="Fitness Nautilus Vrchlabí v roce 2014 - upoutávka">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/-ipUeuKVSPE/hqdefault.jpg" alt="Fitness Nautilus Vrchlabí v roce 2014 - upoutávka" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Fitness Nautilus Vrchlabí v roce 2014 – upoutávka</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="rJQWt_z31JE" data-yt-title="Tomáš Bureš - IFBB Pro, mistr Evropy, mistr světa a Mr. Universe ve Fitness Nautilus">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/rJQWt_z31JE/hqdefault.jpg" alt="Tomáš Bureš - IFBB Pro, mistr Evropy, mistr světa a Mr. Universe ve Fitness Nautilus" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Tomáš Bureš – IFBB Pro, mistr Evropy, mistr světa a Mr. Universe ve Fitness Nautilus</p></div>
+      </div>
+
+      <div class="card video-card">
+        <div class="video-frame" data-yt-id="qeXn9VSWbvQ" data-yt-title="Jakub Šubrt - nadějný český kulturista při tréninku paží">
+          <img class="video-thumb" src="https://i.ytimg.com/vi/qeXn9VSWbvQ/hqdefault.jpg" alt="Jakub Šubrt - nadějný český kulturista při tréninku paží" loading="lazy">
+          <span class="video-play-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+        </div>
+        <div class="video-body"><p>Jakub Šubrt – nadějný český kulturista při tréninku paží</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--yellow);padding:52px 0;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:var(--black);margin-bottom:10px;">Chcete být v dalším videu?</h2>
+    <p style="color:rgba(0,0,0,.6);margin-bottom:22px;">Přijďte trénovat k nám – třeba se příště objevíte na záznamu i vy.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="galerie.html" class="btn" style="background:var(--black);color:var(--yellow);">Prohlédnout galerii</a>
+      <a href="kontakt.html" class="btn" style="background:rgba(0,0,0,.15);color:var(--black);border:1px solid rgba(0,0,0,.2);">Kontaktní formulář</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // Thumbnail fallback chain (some videos don't have an hqdefault image)
+  document.querySelectorAll('.video-thumb').forEach(img => {
+    const id = img.closest('.video-frame').getAttribute('data-yt-id');
+    const sizes = ['hqdefault', 'mqdefault', 'default'];
+    let i = sizes.indexOf('hqdefault');
+    img.addEventListener('error', () => {
+      i++;
+      if (i < sizes.length) img.src = `https://i.ytimg.com/vi/${id}/${sizes[i]}.jpg`;
+    });
+  });
+
+  // Click-to-play YouTube facade – loads the iframe only when the user clicks
+  document.querySelectorAll('.video-frame[data-yt-id]').forEach(frame => {
+    frame.addEventListener('click', () => {
+      const id = frame.getAttribute('data-yt-id');
+      const title = frame.getAttribute('data-yt-title') || 'Video';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.title = title;
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      frame.innerHTML = '';
+      frame.appendChild(iframe);
+      frame.style.cursor = 'default';
+    }, { once: true });
+  });
+</script>
+</body>
+</html>
