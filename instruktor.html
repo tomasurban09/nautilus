@@ -19,8 +19,7 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       overflow: hidden;
-      position: sticky;
-      top: calc(var(--nav-h) + 20px);
+      position: relative;
     }
 
     /* Photo */
@@ -165,9 +164,36 @@
 
     @media (max-width: 960px) {
       .trainer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .trainer-card { position: static; }
       .trainer-photo-wrap { height: 320px; }
       .cert-row { white-space: normal; }
+    }
+
+    /* Certificate gallery */
+    .cert-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .cert-thumb {
+      display: block;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .cert-thumb:hover {
+      border-color: rgba(245,197,0,.35);
+      transform: translateY(-4px);
+    }
+    .cert-gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    @media (max-width: 768px) {
+      .cert-gallery { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -191,11 +217,11 @@
 
       <!-- LEFT -->
       <div>
-        <div class="trainer-card" data-reveal>
+        <div class="trainer-card">
 
           <div class="trainer-photo-wrap">
             <img
-              src="https://www.fitness-nautilus.cz/media/uploads/panel-stepan2.jpg"
+              src="img/stepan-novy.jpg.jpg"
               alt="Štěpán Domorád"
               loading="eager"
               decoding="async"
@@ -237,7 +263,7 @@
         </div>
 
         <!-- Certs stacked -->
-        <div class="certs" data-reveal>
+        <div class="certs">
           <div class="cert-row">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="8" r="6"/>
@@ -318,6 +344,48 @@
     </div>
   </div>
 </section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <span class="section-label">Kvalifikace</span>
+    <h2 style="margin-bottom:24px;">Osvědčení a certifikace</h2>
+    <div class="cert-gallery">
+      <div class="cert-thumb" data-full="https://www.fitness-nautilus.cz/media/uploads/osvedceni1_big.jpg" data-reveal>
+        <img src="https://www.fitness-nautilus.cz/media/uploads/osvedceni1_big.jpg" alt="Osvědčení – Osobní trenér kondičního posilování" loading="lazy">
+      </div>
+      <div class="cert-thumb" data-full="https://www.fitness-nautilus.cz/media/uploads/osvedceni2_big.jpg" data-reveal>
+        <img src="https://www.fitness-nautilus.cz/media/uploads/osvedceni2_big.jpg" alt="Osvědčení – Trenér kulturistiky" loading="lazy">
+      </div>
+      <div class="cert-thumb" data-full="https://www.fitness-nautilus.cz/media/uploads/osvedceni3_big.jpg" data-reveal>
+        <img src="https://www.fitness-nautilus.cz/media/uploads/osvedceni3_big.jpg" alt="Osvědčení – Instruktor fitcentra" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certificate lightbox -->
+<div id="certLightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Zvětšené osvědčení">
+  <button id="certLbClose" class="lightbox-close" aria-label="Zavřít">✕</button>
+  <img id="certLightboxImg" class="lightbox-img" src="" alt="Zvětšené osvědčení">
+</div>
+
+<script>
+  (function () {
+    const lb = document.getElementById('certLightbox');
+    const lbImg = document.getElementById('certLightboxImg');
+    const lbClose = document.getElementById('certLbClose');
+    if (!lb) return;
+    document.querySelectorAll('.cert-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        lbImg.src = thumb.getAttribute('data-full');
+        lb.classList.add('open');
+      });
+    });
+    lbClose.addEventListener('click', () => lb.classList.remove('open'));
+    lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+  })();
+</script>
 
 <section style="background:var(--yellow);padding:52px 0;">
   <div class="container" style="text-align:center;">

@@ -7,7 +7,7 @@
   </div>
   <nav class="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="Fitness Nautilus" style="height:72px;width:auto;display:block;margin:0;"></a>
+      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="Fitness Nautilus" style="height:94px;width:auto;display:block;margin:0;position:relative;top:-10px;"></a>
       <ul class="nav-links">
         <li><a href="index.html">Úvod</a></li>
         <li><a href="galerie.html">Galerie</a></li>
