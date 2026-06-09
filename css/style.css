@@ -20,6 +20,7 @@
   --muted:      #888;
   --text:       #b8b8b8;
   --nav-h:      68px;
+  --banner-h:   44px;
   --radius:     6px;
   --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
 }
@@ -97,7 +98,7 @@ img{max-width:100%;display:block;}
 /* ── Navbar ── */
 .navbar{
   position:fixed;
-  top:0;left:0;right:0;
+  top:var(--banner-h);left:0;right:0;
   height:var(--nav-h);
   z-index:1000;
   display:flex;
@@ -154,6 +155,7 @@ img{max-width:100%;display:block;}
 }
 .nav-links a:hover,.nav-links a.active{color:var(--white);background:rgba(255,255,255,.05);}
 .nav-links .btn{padding:8px 18px;font-size:.82rem;}
+.nav-links .btn-primary{color:var(--black)!important;}
 
 .nav-burger{
   display:none;flex-direction:column;justify-content:center;align-items:center;
@@ -169,7 +171,7 @@ img{max-width:100%;display:block;}
 .nav-mobile{
   display:none;
   position:fixed;
-  top:var(--nav-h);left:0;right:0;
+  top:calc(var(--nav-h) + var(--banner-h));left:0;right:0;
   background:var(--black);
   border-bottom:1px solid var(--border);
   padding:20px;
@@ -197,26 +199,30 @@ img{max-width:100%;display:block;}
   background:var(--yellow);
   color:var(--black);
   text-align:center;
-  padding:10px 24px;
+  padding:0 24px;
   font-family:'Barlow Condensed',sans-serif;
   font-size:.9rem;
   font-weight:700;
   letter-spacing:.06em;
-  position:relative;
+  position:fixed;
+  top:0;left:0;right:0;
+  height:var(--banner-h);
   z-index:1001;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:10px;
   flex-wrap:wrap;
+  overflow:hidden;
 }
+body.banner-hidden{--banner-h:0px;}
 .alert-banner a{color:var(--black);text-decoration:underline;}
 #alertClose{background:none;border:none;cursor:pointer;color:var(--black);font-size:1rem;line-height:1;opacity:.6;padding:2px 4px;}
 #alertClose:hover{opacity:1;}
 
 /* ── Page Hero ── */
 .page-hero{
-  padding:calc(var(--nav-h) + 60px) 0 60px;
+  padding:calc(var(--nav-h) + var(--banner-h) + 60px) 0 60px;
   background:linear-gradient(160deg,var(--black) 0%,var(--dark2) 100%);
   position:relative;
   overflow:hidden;

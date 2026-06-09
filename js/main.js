@@ -45,9 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (alertBanner) {
     if (localStorage.getItem(ALERT_KEY) === '1') {
       alertBanner.style.display = 'none';
+      document.body.classList.add('banner-hidden');
     } else if (alertClose) {
       alertClose.addEventListener('click', () => {
         alertBanner.style.display = 'none';
+        document.body.classList.add('banner-hidden');
         localStorage.setItem(ALERT_KEY, '1');
       });
     }
