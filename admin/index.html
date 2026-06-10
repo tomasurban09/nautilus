@@ -1,12 +1,469 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin – Fitness Nautilus</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root {
+      --black: #0d0d0d; --dark: #141414; --card: #1e1e1e;
+      --border: #2e2e2e; --yellow: #f5c500; --white: #f5f0e8;
+      --muted: #888; --text: #b8b8b8; --red: #ef4444; --green: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: var(--dark); color: var(--text); min-height: 100vh; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* Top bar */
+    .topbar { background: var(--black); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar-title { font-size: 1rem; font-weight: 700; color: var(--white); }
+    .topbar-title span { color: var(--yellow); }
+    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 6px; font-size: .88rem; font-weight: 700; cursor: pointer; border: none; text-decoration: none; transition: all .2s; }
+    .btn-primary { background: var(--yellow); color: #000; }
+    .btn-primary:hover { background: #ffd740; }
+    .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--white); border-color: #555; }
+    .btn-danger { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+    .btn-danger:hover { background: rgba(239,68,68,.25); }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+    .btn-sm { padding: 6px 12px; font-size: .8rem; }
+
+    /* Center box (login/setup) */
+    .center-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 40px; width: 100%; max-width: 420px; }
+    .box-logo { text-align: center; margin-bottom: 28px; }
+    .box-logo .icon { font-size: 2.5rem; margin-bottom: 8px; }
+    .box-logo h1 { font-size: 1.4rem; color: var(--white); }
+    .box-logo p { font-size: .85rem; color: var(--muted); margin-top: 4px; }
+
+    /* Form */
+    .field { margin-bottom: 18px; }
+    label { display: block; font-size: .82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 7px; }
+    input, textarea, select { width: 100%; background: var(--dark); border: 1px solid var(--border); border-radius: 6px; padding: 10px 13px; color: var(--white); font-size: .92rem; font-family: inherit; outline: none; transition: border-color .2s; }
+    input:focus, textarea:focus, select:focus { border-color: var(--yellow); }
+    textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+    .help { font-size: .78rem; color: var(--muted); margin-top: 5px; }
+
+    /* Alerts */
+    .alert { padding: 12px 16px; border-radius: 7px; font-size: .88rem; margin-bottom: 16px; }
+    .alert-error { background: rgba(239,68,68,.12); border: 1px solid rgba(239,68,68,.3); color: var(--red); }
+    .alert-success { background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); color: var(--green); }
+    .alert-info { background: rgba(245,197,0,.08); border: 1px solid rgba(245,197,0,.2); color: var(--yellow); }
+
+    /* Article list */
+    .container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+    .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .page-header h2 { font-size: 1.5rem; color: var(--white); }
+    .article-list { display: flex; flex-direction: column; gap: 12px; }
+    .article-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color .2s; }
+    .article-item:hover { border-color: #444; }
+    .article-item-info { flex: 1; min-width: 0; }
+    .article-item-title { color: var(--white); font-weight: 600; font-size: .98rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .article-item-date { font-size: .8rem; color: var(--muted); }
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: .72rem; font-weight: 700; background: rgba(245,197,0,.15); color: var(--yellow); margin-left: 8px; vertical-align: middle; }
+    .article-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    .empty-state { text-align: center; padding: 60px 0; color: var(--muted); }
+    .empty-state p { margin-bottom: 20px; }
+    .loading { text-align: center; padding: 60px 0; color: var(--muted); }
+
+    /* Editor */
+    .editor-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+    .editor-header h2 { font-size: 1.4rem; color: var(--white); }
+    .editor-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 28px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .editor-footer { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+
+    @media (max-width: 600px) {
+      .box { padding: 28px 20px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .article-item { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+<!-- LOGIN -->
+<div id="screen-login" class="screen active">
+  <div class="center-wrap">
+    <div class="box">
+      <div class="box-logo">
+        <div class="icon">🏋️</div>
+        <h1>Fitness Nautilus</h1>
+        <p>Admin panel – přihlaste se heslem</p>
+      </div>
+      <div id="login-alert"></div>
+      <div class="field">
+        <label>Heslo</label>
+        <input type="password" id="login-password" placeholder="Zadejte heslo" autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="doLogin()">Přihlásit se</button>
+      <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--muted);">
+        Poprvé? <a href="#" onclick="showSetup()" style="color:var(--yellow);">Nastavit admin panel</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SETUP -->
+<div id="screen-setup" class="screen">
+  <div class="center-wrap">
+    <div class="box">
+      <div class="box-logo">
+        <div class="icon">⚙️</div>
+        <h1>Nastavení adminu</h1>
+        <p>Jednorázové nastavení pro tento prohlížeč</p>
+      </div>
+      <div id="setup-alert"></div>
+      <div class="alert alert-info">Token se uloží zašifrovaně pouze v tomto prohlížeči. Bez hesla ho nikdo nezíská.</div>
+      <div class="field">
+        <label>GitHub token</label>
+        <input type="password" id="setup-token" placeholder="github_pat_...">
+        <p class="help">Token z GitHub → Settings → Developer settings → Fine-grained tokens</p>
+      </div>
+      <div class="field">
+        <label>Zvolte heslo pro admin panel</label>
+        <input type="password" id="setup-password" placeholder="Minimálně 8 znaků">
+      </div>
+      <div class="field">
+        <label>Heslo znovu</label>
+        <input type="password" id="setup-password2" placeholder="Zopakujte heslo">
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="doSetup()">Uložit a přihlásit se</button>
+      <p style="text-align:center;margin-top:16px;font-size:.8rem;color:var(--muted);">
+        <a href="#" onclick="showLogin()" style="color:var(--yellow);">← Zpět na přihlášení</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLES LIST -->
+<div id="screen-articles" class="screen">
+  <div class="topbar">
+    <div class="topbar-title">🏋️ <span>Nautilus</span> Admin</div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <a href="../index.html" target="_blank" class="btn btn-ghost btn-sm">← Web</a>
+      <button class="btn btn-ghost btn-sm" onclick="doLogout()">Odhlásit</button>
+    </div>
+  </div>
+  <div class="container">
+    <div class="page-header">
+      <h2>Aktuality</h2>
+      <button class="btn btn-primary" onclick="showEditor(null)">+ Nová aktualita</button>
+    </div>
+    <div id="articles-alert"></div>
+    <div id="articles-list" class="article-list">
+      <div class="loading">Načítám…</div>
+    </div>
+  </div>
+</div>
+
+<!-- EDITOR -->
+<div id="screen-editor" class="screen">
+  <div class="topbar">
+    <div class="topbar-title">🏋️ <span>Nautilus</span> Admin</div>
+    <button class="btn btn-ghost btn-sm" onclick="showArticles()">← Zpět na seznam</button>
+  </div>
+  <div class="container">
+    <div class="editor-header">
+      <h2 id="editor-title">Nová aktualita</h2>
+    </div>
+    <div id="editor-alert"></div>
+    <div class="editor-card">
+      <div class="grid-2">
+        <div class="field">
+          <label>Nadpis *</label>
+          <input type="text" id="f-title" placeholder="Název aktuality">
+        </div>
+        <div class="field">
+          <label>Datum *</label>
+          <input type="date" id="f-date">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Štítek <span style="font-weight:400;text-transform:none;">(volitelné)</span></label>
+          <input type="text" id="f-badge" placeholder="např. Aktuální nebo Novinka">
+        </div>
+        <div class="field">
+          <label>Odkaz na tlačítko <span style="font-weight:400;text-transform:none;">(volitelné)</span></label>
+          <input type="text" id="f-link" placeholder="např. cenik.html">
+        </div>
+      </div>
+      <div class="field" id="f-link-label-wrap" style="display:none;">
+        <label>Text tlačítka</label>
+        <input type="text" id="f-link-label" placeholder="např. Více o FLEX →">
+      </div>
+      <div class="field">
+        <label>Text článku *</label>
+        <textarea id="f-body" placeholder="Text aktuality..."></textarea>
+        <p class="help">Tučný text: **text**, kurzíva: *text*</p>
+      </div>
+      <div class="editor-footer">
+        <button class="btn btn-primary" onclick="saveArticle()">💾 Uložit</button>
+        <button class="btn btn-ghost" onclick="showArticles()">Zrušit</button>
+        <button class="btn btn-danger btn-sm" id="delete-btn" style="margin-left:auto;" onclick="deleteArticle()">🗑 Smazat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const REPO = 'turboklada69/nautilus';
+const PATH = 'content/aktuality';
+const STORAGE_KEY = 'nautilus_admin_token';
+let ghToken = null;
+let editingFile = null; // { name, sha } when editing existing
+
+// ── Crypto ──────────────────────────────────────────
+async function deriveKey(password, salt) {
+  const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:150000,hash:'SHA-256'}, km, {name:'AES-GCM',length:256}, false, ['encrypt','decrypt']);
+}
+async function encryptToken(token, password) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv   = crypto.getRandomValues(new Uint8Array(12));
+  const key  = await deriveKey(password, salt);
+  const ct   = await crypto.subtle.encrypt({name:'AES-GCM',iv}, key, new TextEncoder().encode(token));
+  const buf  = new Uint8Array(16+12+ct.byteLength);
+  buf.set(salt,0); buf.set(iv,16); buf.set(new Uint8Array(ct),28);
+  return btoa(String.fromCharCode(...buf));
+}
+async function decryptToken(b64, password) {
+  const buf = Uint8Array.from(atob(b64), c=>c.charCodeAt(0));
+  const key = await deriveKey(password, buf.slice(0,16));
+  const dec = await crypto.subtle.decrypt({name:'AES-GCM',iv:buf.slice(16,28)}, key, buf.slice(28));
+  return new TextDecoder().decode(dec);
+}
+
+// ── GitHub API ───────────────────────────────────────
+async function gh(method, path, body) {
+  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+    method,
+    headers: { 'Authorization':`Bearer ${ghToken}`, 'Accept':'application/vnd.github.v3+json', 'Content-Type':'application/json' },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (!r.ok && r.status!==404) { const e=await r.json(); throw new Error(e.message||r.status); }
+  return r.status===404 ? null : r.json();
+}
+
+// ── Markdown helpers ─────────────────────────────────
+function parseMd(text) {
+  const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!m) return {meta:{},body:text};
+  const meta={};
+  m[1].split('\n').forEach(l=>{ const i=l.indexOf(':'); if(i>0) meta[l.slice(0,i).trim()]=l.slice(i+1).trim().replace(/^["']|["']$/g,''); });
+  return {meta, body:m[2].trim()};
+}
+function buildMd(meta,body) {
+  const fm=Object.entries(meta).filter(([,v])=>v).map(([k,v])=>`${k}: ${v}`).join('\n');
+  return `---\n${fm}\n---\n${body}`;
+}
+function slugify(s) {
+  return s.toLowerCase()
+    .replace(/[áä]/g,'a').replace(/[čć]/g,'c').replace(/[ď]/g,'d').replace(/[éě]/g,'e')
+    .replace(/[íï]/g,'i').replace(/[ňń]/g,'n').replace(/[óö]/g,'o').replace(/[řŕ]/g,'r')
+    .replace(/[šś]/g,'s').replace(/[ť]/g,'t').replace(/[úůü]/g,'u').replace(/[ýÿ]/g,'y')
+    .replace(/[žź]/g,'z').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+}
+function fmtDate(d) {
+  const x=new Date(d+'T12:00:00'); if(isNaN(x)) return d;
+  return x.toLocaleDateString('cs-CZ',{day:'numeric',month:'numeric',year:'numeric'});
+}
+
+// ── UI helpers ───────────────────────────────────────
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+id).classList.add('active');
+}
+function alert_(id, msg, type='error') {
+  const el=document.getElementById(id);
+  el.innerHTML = msg ? `<div class="alert alert-${type}">${msg}</div>` : '';
+}
+function showLogin()  { showScreen('login'); }
+function showSetup()  { showScreen('setup'); }
+
+// ── Auth ─────────────────────────────────────────────
+async function doLogin() {
+  const pw = document.getElementById('login-password').value;
+  const enc = localStorage.getItem(STORAGE_KEY);
+  if (!enc) { alert_('login-alert','Nejprve nastavte admin panel.'); return; }
+  if (!pw)  { alert_('login-alert','Zadejte heslo.'); return; }
+  try {
+    ghToken = await decryptToken(enc, pw);
+    // Ověříme token voláním API
+    const test = await fetch(`https://api.github.com/repos/${REPO}`,{headers:{'Authorization':`Bearer ${ghToken}`}});
+    if (!test.ok) throw new Error('Špatné heslo nebo neplatný token.');
+    showArticles();
+  } catch(e) {
+    alert_('login-alert', e.message==='Špatné heslo nebo neplatný token.' ? e.message : 'Špatné heslo.');
+  }
+}
+
+async function doSetup() {
+  const token = document.getElementById('setup-token').value.trim();
+  const pw    = document.getElementById('setup-password').value;
+  const pw2   = document.getElementById('setup-password2').value;
+  if (!token) { alert_('setup-alert','Zadejte GitHub token.'); return; }
+  if (pw.length < 8) { alert_('setup-alert','Heslo musí mít alespoň 8 znaků.'); return; }
+  if (pw !== pw2)    { alert_('setup-alert','Hesla se neshodují.'); return; }
+  try {
+    const enc = await encryptToken(token, pw);
+    localStorage.setItem(STORAGE_KEY, enc);
+    ghToken = token;
+    showArticles();
+  } catch(e) {
+    alert_('setup-alert','Chyba při šifrování: '+e.message);
+  }
+}
+
+function doLogout() {
+  ghToken = null;
+  document.getElementById('login-password').value = '';
+  showLogin();
+}
+
+// ── Articles list ────────────────────────────────────
+async function showArticles() {
+  showScreen('articles');
+  alert_('articles-alert','');
+  const listEl = document.getElementById('articles-list');
+  listEl.innerHTML = '<div class="loading">Načítám…</div>';
+  try {
+    const files = (await gh('GET', PATH) || []).filter(f=>f.name.endsWith('.md'));
+    if (!files.length) {
+      listEl.innerHTML = '<div class="empty-state"><p>Zatím žádné aktuality.</p><button class="btn btn-primary" onclick="showEditor(null)">+ Přidat první aktualitu</button></div>';
+      return;
+    }
+    const articles = await Promise.all(files.map(async f => {
+      const r = await fetch(f.download_url+'?t='+Date.now());
+      const text = await r.text();
+      const {meta} = parseMd(text);
+      return { name:f.name, sha:f.sha, title:meta.title||f.name, date:meta.date||'', badge:meta.badge||'' };
+    }));
+    articles.sort((a,b)=>new Date(b.date)-new Date(a.date));
+    listEl.innerHTML = articles.map(a=>`
+      <div class="article-item">
+        <div class="article-item-info">
+          <div class="article-item-title">${a.title}${a.badge?`<span class="badge">${a.badge}</span>`:''}</div>
+          <div class="article-item-date">${fmtDate(a.date)}</div>
+        </div>
+        <div class="article-actions">
+          <button class="btn btn-ghost btn-sm" onclick="openEditor('${a.name}','${a.sha}')">✏️ Upravit</button>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    alert_('articles-alert','Chyba: '+e.message);
+    listEl.innerHTML = '';
+  }
+}
+
+// ── Editor ────────────────────────────────────────────
+function showEditor(file) {
+  editingFile = file;
+  showScreen('editor');
+  document.getElementById('editor-title').textContent = file ? 'Upravit aktualitu' : 'Nová aktualita';
+  document.getElementById('delete-btn').style.display = file ? 'inline-flex' : 'none';
+  document.getElementById('f-title').value = '';
+  document.getElementById('f-date').value = new Date().toISOString().slice(0,10);
+  document.getElementById('f-badge').value = '';
+  document.getElementById('f-link').value = '';
+  document.getElementById('f-link-label').value = '';
+  document.getElementById('f-body').value = '';
+  document.getElementById('f-link-label-wrap').style.display = 'none';
+  alert_('editor-alert','');
+}
+
+async function openEditor(name, sha) {
+  showScreen('editor');
+  document.getElementById('editor-title').textContent = 'Načítám…';
+  try {
+    const files = await gh('GET', PATH);
+    const file  = files.find(f=>f.name===name);
+    const res   = await fetch(file.download_url+'?t='+Date.now());
+    const text  = await res.text();
+    const {meta,body} = parseMd(text);
+    editingFile = { name, sha: file.sha };
+    document.getElementById('editor-title').textContent = 'Upravit aktualitu';
+    document.getElementById('delete-btn').style.display = 'inline-flex';
+    document.getElementById('f-title').value       = meta.title||'';
+    document.getElementById('f-date').value        = meta.date||'';
+    document.getElementById('f-badge').value       = meta.badge||'';
+    document.getElementById('f-link').value        = meta.link||'';
+    document.getElementById('f-link-label').value  = meta.link_label||'';
+    document.getElementById('f-link-label-wrap').style.display = meta.link ? 'block' : 'none';
+    document.getElementById('f-body').value        = body;
+    alert_('editor-alert','');
+  } catch(e) {
+    alert_('editor-alert','Chyba při načítání: '+e.message);
+  }
+}
+
+document.addEventListener('input', e => {
+  if (e.target.id === 'f-link') {
+    document.getElementById('f-link-label-wrap').style.display = e.target.value ? 'block' : 'none';
+  }
+});
+
+async function saveArticle() {
+  const title = document.getElementById('f-title').value.trim();
+  const date  = document.getElementById('f-date').value;
+  const body  = document.getElementById('f-body').value.trim();
+  if (!title || !date || !body) { alert_('editor-alert','Vyplňte nadpis, datum a text.'); return; }
+
+  const meta = {
+    title,
+    date,
+    badge:      document.getElementById('f-badge').value.trim(),
+    link:       document.getElementById('f-link').value.trim(),
+    link_label: document.getElementById('f-link-label').value.trim(),
+  };
+  const content = buildMd(meta, body);
+  const filename = editingFile ? editingFile.name : `${date}-${slugify(title)}.md`;
+  const b64 = btoa(unescape(encodeURIComponent(content)));
+
+  const saveBtn = document.querySelector('#screen-editor .btn-primary');
+  saveBtn.disabled = true; saveBtn.textContent = 'Ukládám…';
+
+  try {
+    await gh('PUT', `${PATH}/${filename}`, {
+      message: editingFile ? `Upravena aktualita: ${title}` : `Přidána aktualita: ${title}`,
+      content: b64,
+      ...(editingFile ? {sha: editingFile.sha} : {})
+    });
+    alert_('editor-alert','✓ Uloženo! Na webu se změna projeví za chvíli.','success');
+    if (!editingFile) setTimeout(()=>showArticles(), 1500);
+  } catch(e) {
+    alert_('editor-alert','Chyba při ukládání: '+e.message);
+  } finally {
+    saveBtn.disabled = false; saveBtn.textContent = '💾 Uložit';
+  }
+}
+
+async function deleteArticle() {
+  if (!editingFile) return;
+  if (!confirm('Opravdu smazat tuto aktualitu?')) return;
+  try {
+    await fetch(`https://api.github.com/repos/${REPO}/contents/${PATH}/${editingFile.name}`, {
+      method: 'DELETE',
+      headers: {'Authorization':`Bearer ${ghToken}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+      body: JSON.stringify({message:`Smazána aktualita: ${editingFile.name}`, sha: editingFile.sha})
+    });
+    showArticles();
+  } catch(e) {
+    alert_('editor-alert','Chyba při mazání: '+e.message);
+  }
+}
+
+// ── Init ─────────────────────────────────────────────
+(function init() {
+  document.addEventListener('keydown', e => {
+    if (e.key==='Enter' && document.getElementById('screen-login').classList.contains('active')) doLogin();
+  });
+  if (!localStorage.getItem(STORAGE_KEY)) showSetup();
+  else showLogin();
+})();
+</script>
 </body>
 </html>
