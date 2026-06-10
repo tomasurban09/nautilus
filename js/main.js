@@ -31,12 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Scroll reveal
-  if ('IntersectionObserver' in window) {
+  function initReveal() {
+    if (!('IntersectionObserver' in window)) return;
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); }});
     }, {threshold:.1});
-    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    document.querySelectorAll('[data-reveal]:not(.revealed)').forEach(el => io.observe(el));
   }
+  initReveal();
+  window._initReveal = initReveal;
 
   // Alert close (remember dismissal)
   const alertClose = document.getElementById('alertClose');

@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+locale: cs
+
+collections:
+  - name: aktuality
+    label: Aktuality
+    folder: content/aktuality
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    fields:
+      - { label: Nadpis, name: title, widget: string }
+      - { label: Datum, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD. MM. YYYY", time_format: false }
+      - { label: "Štítek (např. Aktuální nebo Novinka)", name: badge, widget: string, required: false }
+      - { label: "Odkaz na tlačítko (např. cenik.html)", name: link, widget: string, required: false }
+      - { label: "Text tlačítka (např. Více →)", name: link_label, widget: string, required: false }
+      - { label: Text článku, name: body, widget: markdown }
